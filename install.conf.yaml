@@ -9,9 +9,11 @@
     ~/.dotfiles: ''
     ~/.bash:
     ~/.bashrc:
+    ~/.gitconfig:
 
 - create:
     - ~/.vim/undo-history
+    - ~/projects
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]

@@ -1,0 +1,7 @@
+[user]
+	name = Richard Hallett
+	email = richard@richardhallett.com
+
+# Load DataCite gitconfig
+[includeIf "gitdir:~/projects/datacite/"]
+	path = ~/projects/datacite/.gitconfig

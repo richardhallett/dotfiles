@@ -9,6 +9,7 @@
     ~/.dotfiles: ''
     ~/.bash:
     ~/.bashrc:
+      force: true
     ~/.gitconfig:
 
 - create:

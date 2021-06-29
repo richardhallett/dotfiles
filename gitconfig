@@ -5,3 +5,5 @@
 # Load DataCite gitconfig
 [includeIf "gitdir:~/projects/datacite/"]
 	path = ~/projects/datacite/.gitconfig
+[pull]
+	rebase = false

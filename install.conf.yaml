@@ -7,8 +7,10 @@
 
 - link:
     ~/.dotfiles: ''
+    ~/.irssi:
     ~/.bash:
     ~/.bashrc:
+      force: true
     ~/.gitconfig:
 
 - create:

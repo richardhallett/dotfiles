@@ -20,3 +20,13 @@ fi
 if [ -x "$(rbenv -v)" ]; then
     eval "$(rbenv init -)"
 fi
+
+# If rbenv is install then run init for shell
+if [ -x "$(rbenv -v)" ]; then
+    eval "$(rbenv init -)"
+fi
+
+# If cargo env file is install then source it
+if [ -f $HOME/.cargo/env ]; then
+    . "$HOME/.cargo/env"
+fi

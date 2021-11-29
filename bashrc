@@ -30,3 +30,8 @@ fi
 if [ -f $HOME/.cargo/env ]; then
     . "$HOME/.cargo/env"
 fi
+
+# If N(Node package manager) installed, then run it's includes
+if [ -f $HOME/n/bin/n ]; then
+    export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"
+fi

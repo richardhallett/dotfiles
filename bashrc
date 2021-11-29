@@ -35,3 +35,6 @@ fi
 if [ -f $HOME/n/bin/n ]; then
     export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"
 fi
+
+# Docker CE exports
+export DOCKER_HOST=unix:///run/user/1000/docker.sock

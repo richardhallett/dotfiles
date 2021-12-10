@@ -17,13 +17,10 @@ if [ -f ~/.bashrc_local ]; then
 fi
 
 # If rbenv is install then run init for shell
-if [ -x "$(rbenv -v)" ]; then
+if [ -f $HOME/.rbenv/bin/rbenv ]; then
+    export PATH="$HOME/.rbenv/bin:$PATH"
     eval "$(rbenv init -)"
-fi
-
-# If rbenv is install then run init for shell
-if [ -x "$(rbenv -v)" ]; then
-    eval "$(rbenv init -)"
+    export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
 fi
 
 # If cargo env file is install then source it

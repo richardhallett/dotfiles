@@ -36,5 +36,15 @@ if [ -f $HOME/n/bin/n ]; then
     export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"
 fi
 
+# Check for nim and add to path
+if [ -f $HOME/.nimble/bin/nim ]; then
+    export PATH=/home/rph/.nimble/bin:$PATH
+fi
+
+# Check for go and add to path
+if [ -f $HOME/tools/go/bin/go ]; then
+    export PATH=$HOME/tools/go/bin:$PATH
+fi
+
 # Docker CE exports
 export DOCKER_HOST=unix:///run/user/1000/docker.sock

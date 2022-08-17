@@ -48,5 +48,12 @@ if [ -f $HOME/tools/go/bin/go ]; then
     export GOPATH=$(go env GOPATH)
 fi
 
+# Check for pyenv and add to path
+if [ -f $HOME/.pyenv/bin/pyenv ]; then
+    export PYENV_ROOT="$HOME/.pyenv"
+    command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+    eval "$(pyenv init -)"
+fi
+
 # Docker CE exports
 export DOCKER_HOST=unix:///run/user/1000/docker.sock

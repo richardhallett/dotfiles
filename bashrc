@@ -44,6 +44,8 @@ fi
 # Check for go and add to path
 if [ -f $HOME/tools/go/bin/go ]; then
     export PATH=$HOME/tools/go/bin:$PATH
+    export PATH=$PATH:$(go env GOPATH)/bin
+    export GOPATH=$(go env GOPATH)
 fi
 
 # Docker CE exports

@@ -12,6 +12,9 @@
     ~/.bashrc:
       force: true
     ~/.gitconfig:
+    ~/.config/fish:
+      glob: true
+      path: config/fish/*
 
 - create:
     - ~/.vim/undo-history

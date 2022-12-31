@@ -79,6 +79,11 @@ packer.startup(function(use)
         },
         tag = 'nightly' -- optional, updated every week. (see issue #1193)
     }
+    -- nvim-tree
+    vim.keymap.set('n', '<leader>tt', require('nvim-tree').toggle, {
+        desc = '[T]oggle [T]ree'
+    })
+
 
     use 'mhinz/vim-startify'   -- Start screen
 

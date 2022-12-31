@@ -11,7 +11,7 @@ git clone https://github.com/richardhallett/dotfiles ~/.dotfiles && cd ~/.dotfil
 ## Optional
 ```bash
 # Download and setup links for core binaries
-./install -vv -c install-core-binaries.conf.yaml
+./install -vv -c install-core-binaries-linux.conf.yaml
 ```
 
 ```bash

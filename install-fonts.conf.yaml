@@ -1,0 +1,13 @@
+- defaults:
+    link:
+      create: true
+      relink: true
+
+- clean: [~/.local/share/fonts]
+
+- shell:
+  -
+    description: Download and install fonts
+    command: >-
+      cd ~/.local/share/fonts || exit 1;
+      wget "https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/JetBrainsMono.zip" && unzip JetBrainsMono.zip

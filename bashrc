@@ -16,8 +16,9 @@ if [ -f ~/.bashrc_local ]; then
     source ~/.bashrc_local
 fi
 
-# Export local bin folder to path
+# Export local bin folders to path
 export PATH="$HOME/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
 
 # If rbenv is install then run init for shell
 if [ -f $HOME/.rbenv/bin/rbenv ]; then

@@ -72,6 +72,16 @@ packer.startup(function(use)
         cond = vim.fn.executable 'make' == 1
     }
 
+    -- Treeview
+    use {
+        'nvim-tree/nvim-tree.lua',
+        requires = {'nvim-tree/nvim-web-devicons' -- optional, for file icons
+        },
+        tag = 'nightly' -- optional, updated every week. (see issue #1193)
+    }
+
+    use 'mhinz/vim-startify'   -- Start screen
+
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
     if packer_bootstrap then

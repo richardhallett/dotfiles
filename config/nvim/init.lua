@@ -4,6 +4,8 @@ require('keys')
 require('plugins')
 
 vim.api.nvim_set_option('updatetime', 300)
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin =
 
 -- Fixed column for diagnostics to appear
 -- Show autodiagnostic popup on cursor hover_range
@@ -320,4 +322,6 @@ require("gruvbox").setup({
     dim_inactive = false,
     transparent_mode = false
 })
-vim.cmd("colorscheme gruvbox")
+
+-- Setup nvim-tree
+require("nvim-tree").setup()

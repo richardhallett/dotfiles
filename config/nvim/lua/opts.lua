@@ -17,6 +17,8 @@ opt.syntax = "ON" -- str:  Allow syntax highlighting
 opt.termguicolors = true -- bool: If term supports ui color then enable
 opt.background = "light" -- or "light" for light mode
 opt.guifont = "JetBrainsMono\\ Nerd\\ Font\\ Mono:h16"
+vim.cmd("colorscheme gruvbox")
+
 
 
 -- [[ Search ]]

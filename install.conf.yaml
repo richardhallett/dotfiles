@@ -15,6 +15,9 @@
     ~/.config/fish:
       glob: true
       path: config/fish/*
+    ~/.config/nvim:
+      glob: true
+      path: config/nvim/*
     ~/.config/alacritty/alacritty.yml:
       path: config/alacritty/alacritty.yml
 

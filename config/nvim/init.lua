@@ -16,6 +16,34 @@ set signcolumn=yes
 autocmd CursorHold * lua vim.diagnostic.open_float(nil, { focusable = false })
 ]])
 
+-- LSP Diagnostics Options Setup
+local sign = function(opts)
+    vim.fn.sign_define(opts.name, {
+      texthl = opts.name,
+      text = opts.text,
+      numhl = ''
+    })
+end
+
+sign({name = 'DiagnosticSignError', text = ''})
+sign({name = 'DiagnosticSignWarn', text = ''})
+sign({name = 'DiagnosticSignHint', text = ''})
+sign({name = 'DiagnosticSignInfo', text = ''})
+
+vim.diagnostic.config({
+    virtual_text = false,
+    signs = true,
+    update_in_insert = true,
+    underline = true,
+    severity_sort = false,
+    float = {
+        border = 'rounded',
+        source = 'always',
+        header = '',
+        prefix = '',
+    },
+})
+
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', {
@@ -210,6 +238,51 @@ local on_attach = function(_, bufnr)
     })
 end
 
+local rt = require("rust-tools")
+local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
+rt.setup(({
+    -- rust-tools options
+    tools = {
+        inlay_hints = {
+            auto = true,
+            show_parameter_hints = true,
+            parameter_hints_prefix = "<- ",
+            other_hints_prefix = "=> "
+        }
+    },
+
+    server = {
+        on_attach = function(client, bufnr)
+
+        local bufopts = {
+            noremap = true,
+            silent = true,
+            buffer = bufnr
+        }
+        -- Hover actions
+        vim.keymap.set("n", "<C-space>", rt.hover_actions.hover_actions, { buffer = bufnr })
+        -- Code action groups
+        vim.keymap.set("n", "<Leader>a", rt.code_action_group.code_action_group, { buffer = bufnr })
+        end,
+
+        capabilities = capabilities,
+
+        ["rust-analyzer"] = {
+            assist = {
+                importEnforceGranularity = true,
+                importPrefix = "create"
+            },
+            cargo = { allFeatures = true },
+            checkOnSave = {
+                -- default: `cargo check`
+                command = "clippy",
+                allFeatures = true
+            }
+        }
+    }
+    })
+)
+
 -- Enable the following language servers
 --  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
 --
@@ -219,8 +292,12 @@ local servers = {
     -- clangd = {},
     -- gopls = {},
     -- pyright = {},
-    -- rust_analyzer = {},
+    rust_analyzer = {},
     -- tsserver = {},
+    -- tflint = {},
+    -- eslint = {},
+    -- terraformls = {},
+    -- gopls = {}
 
     sumneko_lua = {
         Lua = {
@@ -252,11 +329,19 @@ mason_lspconfig.setup {
 }
 
 mason_lspconfig.setup_handlers {function(server_name)
-    require('lspconfig')[server_name].setup {
-        capabilities = capabilities,
-        on_attach = on_attach,
-        settings = servers[server_name]
+    -- List of server that we configure manually
+    local manual_servers = {
+        "rust_analyzer"
     }
+
+    -- Only setup servers that we don't configure manually
+    if not vim.tbl_contains(manual_servers, server_name) then
+        require('lspconfig')[server_name].setup {
+            capabilities = capabilities,
+            on_attach = on_attach,
+            settings = servers[server_name]
+        }
+    end
 end}
 
 -- Turn on lsp status information
@@ -326,6 +411,20 @@ require("gruvbox").setup({
 })
 vim.cmd("colorscheme gruvbox")
 
-
--- Setup nvim-tree
-require("nvim-tree").setup()
+require("nvim-tree").setup({
+    sort_by = "case_sensitive",
+    view = {
+      adaptive_size = true,
+      mappings = {
+        list = {
+          { key = "u", action = "dir_up" },
+        },
+      },
+    },
+    renderer = {
+      group_empty = true,
+    },
+    filters = {
+      dotfiles = true,
+    },
+  })

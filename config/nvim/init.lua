@@ -243,6 +243,7 @@ local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protoc
 rt.setup(({
     -- rust-tools options
     tools = {
+        autoSetHints = true,
         inlay_hints = {
             auto = true,
             show_parameter_hints = true,

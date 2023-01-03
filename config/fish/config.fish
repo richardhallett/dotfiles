@@ -1,4 +1,4 @@
-#set --export EDITOR nvim
+set --export EDITOR nvim
 
 # disable greeting
 set fish_greeting

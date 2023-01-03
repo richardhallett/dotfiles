@@ -12,4 +12,4 @@ shopt -s histappend
 shopt -s checkwinsize
 
 # Default editor
-export EDITOR=vim
+export EDITOR=nvim

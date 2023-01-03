@@ -89,6 +89,11 @@ packer.startup(function(use)
 
     use 'mhinz/vim-startify'   -- Start screen
 
+    use 'nvim-tree/nvim-web-devicons'
+    use {'romgrk/barbar.nvim', wants = 'nvim-web-devicons'}
+
+    use { "github/copilot.vim" } -- Github copilot
+
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
     if packer_bootstrap then

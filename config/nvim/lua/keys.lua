@@ -69,3 +69,10 @@ map('n', '<Space>bb', '<Cmd>BufferOrderByBufferNumber<CR>', opts)
 map('n', '<Space>bd', '<Cmd>BufferOrderByDirectory<CR>', opts)
 map('n', '<Space>bl', '<Cmd>BufferOrderByLanguage<CR>', opts)
 map('n', '<Space>bw', '<Cmd>BufferOrderByWindowNumber<CR>', opts)
+
+-- Center screen on next/previous selection.
+map('n', 'n', 'nzz', { noremap = true })
+map('n', 'N', 'Nzz', { noremap = true })
+-- Last and next jump should center too.
+map('n', '<C-o>', '<C-o>zz', { noremap = true })
+map('n', '<C-i>', '<C-i>zz', { noremap = true })

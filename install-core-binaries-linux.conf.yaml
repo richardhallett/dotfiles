@@ -18,6 +18,7 @@
       wget "https://github.com/sharkdp/fd/releases/download/v8.3.2/fd-v8.3.2-x86_64-unknown-linux-gnu.tar.gz" -O - | tar -xz;
       wget "https://github.com/sharkdp/bat/releases/download/v0.21.0/bat-v0.21.0-x86_64-unknown-linux-gnu.tar.gz" -O - | tar -xz;
       wget "https://github.com/ogham/exa/releases/download/v0.10.1/exa-linux-x86_64-v0.10.1.zip" && unzip -o -d exa-linux-x86_64-v0.10.1 exa-linux-x86_64-v0.10.1.zip && rm exa-linux-x86_64-v0.10.1.zip;
+      mkdir ./fzf && wget "https://github.com/junegunn/fzf/releases/download/0.35.1/fzf-0.35.1-linux_amd64.tar.gz" -O - | tar -xz -C ./fzf/;
 - link:
     ~/.local/bin/nvim:
       path: ~/.local/share/packages/nvim-linux64/bin/nvim
@@ -51,3 +52,7 @@
       path: ~/.local/share/packages/exa-linux-x86_64-v0.10.1/bin/exa
     ~/.local/share/man/man1/exa.1:
       path: ~/.local/share/packages/exa-linux-x86_64-v0.10.1/man/exa.1
+
+- link:
+    ~/.local/bin/fzf:
+      path: ~/.local/share/packages/fzf/fzf

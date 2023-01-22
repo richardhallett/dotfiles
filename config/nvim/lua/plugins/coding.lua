@@ -1,0 +1,122 @@
+return {
+    -- Autocompletion
+    {
+        "hrsh7th/nvim-cmp",
+        version = false,
+        event = "InsertEnter",
+        dependencies = {
+            "hrsh7th/cmp-nvim-lsp",
+            "hrsh7th/cmp-buffer",
+            "hrsh7th/cmp-path",
+            "saadparwaiz1/cmp_luasnip",
+        },
+        opts = function()
+            local cmp = require("cmp")
+            return {
+                snippet = {
+                    expand = function(args)
+                    require("luasnip").lsp_expand(args.body)
+                    end,
+                },
+                mapping = cmp.mapping.preset.insert({
+                    ["<C-b>"] = cmp.mapping.scroll_docs(-4),
+                    ["<C-f>"] = cmp.mapping.scroll_docs(4),
+                    ["<C-Space>"] = cmp.mapping.complete(),
+                    ["<C-e>"] = cmp.mapping.abort(),
+                    ["<CR>"] = cmp.mapping.confirm({ select = true }),
+                }),
+                sources = cmp.config.sources({
+                    { name = "nvim_lsp" },
+                    { name = "luasnip" },
+                    { name = "buffer" },
+                    { name = "path" },
+                }),
+            }
+        end,
+        },
+
+    -- Snippet engine
+    {
+        "L3MON4D3/LuaSnip",
+        dependencies = {
+            "rafamadriz/friendly-snippets",
+            config = function()
+                require("luasnip.loaders.from_vscode").lazy_load()
+            end,
+        },
+        opts = {
+            history = true,
+            delete_check_events = "TextChanged",
+        },
+        keys = {
+            {
+                "<tab>",
+                function()
+                 return require("luasnip").jumpable(1) and "<Plug>luasnip-jump-next" or "<tab>"
+                end,
+                expr = true, silent = true, mode = "i",
+            },
+            { "<tab>", function() require("luasnip").jump(1) end, mode = "s" },
+            { "<s-tab>", function() require("luasnip").jump(-1) end, mode = { "i", "s" } },
+        },
+    },
+
+    -- Auto pairing for brackets, quotes, etc
+    {
+        "echasnovski/mini.pairs",
+        event = "VeryLazy",
+        config = function(_, opts)
+            require("mini.pairs").setup(opts)
+        end,
+    },
+
+    -- Auto surrounding for brackets, quotes, etc
+    {
+        "echasnovski/mini.surround",
+        event = "VeryLazy",
+        opts = {
+            mappings = {
+              add = "gsa", -- Add surrounding in Normal and Visual modes
+              delete = "gsd", -- Delete surrounding
+              find = "gsf", -- Find surrounding (to the right)
+              find_left = "gsF", -- Find surrounding (to the left)
+              highlight = "gsh", -- Highlight surrounding
+              replace = "gsr", -- Replace surrounding
+              update_n_lines = "gsn", -- Update `n_lines`
+            },
+        },
+        config = function(_, opts)
+            require("mini.surround").setup(opts)
+        end,
+    },
+
+    -- Auto commenting
+    {
+        'numToStr/Comment.nvim',
+        config = function()
+            require('Comment').setup()
+        end
+    }
+
+    -- -- copilot
+    -- {
+    --     "zbirenbaum/copilot.lua",
+    --     cmd = "Copilot",
+    --     opts = {
+    --             suggestion = { enabled = false },
+    --             panel = { enabled = false },
+    --     },
+    --     event = "VimEnter",
+    --     config = function(_, opts)
+    --         vim.defer_fn(function()
+    --         require("copilot").setup(opts)
+    --         end, 100)
+    --     end,
+    -- },
+
+    -- -- copilot cmp plugin
+    -- {
+    --     "zbirenbaum/copilot-cmp",
+    --     dependencies = { "copilot.lua" },
+    -- },
+}

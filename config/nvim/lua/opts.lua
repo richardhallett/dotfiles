@@ -16,9 +16,8 @@ opt.fileencoding = 'utf8' -- str:  File encoding to use
 -- [[ Theme ]]
 opt.syntax = "ON" -- str:  Allow syntax highlighting
 opt.termguicolors = true -- bool: If term supports ui color then enable
-opt.background = "light" -- or "light" for light mode
+opt.background = "light" -- gruvbox light mode
 opt.guifont = "JetBrainsMono\\ Nerd\\ Font\\ Mono:h16"
-
 
 -- [[ Search ]]
 opt.ignorecase = true -- bool: Ignore case in search patterns
@@ -36,15 +35,4 @@ opt.tabstop = 4 -- num:  Number of spaces tabs count for
 opt.splitright = true -- bool: Place new window to right of current one
 opt.splitbelow = true -- bool: Place new window below the current one
 
--- [[ Misc ]]
--- Set completeopt to have a better completion experience
--- :help completeopt
--- menuone: popup even when there's only one match
--- noinsert: Do not insert text until a selection is made
--- noselect: Do not select, force to select one from the menu
--- shortness: avoid showing extra messages when using completion
--- updatetime: set updatetime for CursorHold
-opt.completeopt = {'menuone', 'noselect', 'noinsert'}
-opt.shortmess = vim.opt.shortmess + {
-    c = true
-}
+opt.completeopt = "menu,menuone,noinsert" -- str:  Completion options

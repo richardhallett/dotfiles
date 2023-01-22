@@ -28,11 +28,10 @@ return {
             },
           },
           signs = {
-            -- options for vim.fn.sign_define()
-            error = { text = "", texthl = "LspDiagnosticsSignError" },
-            warning = { text = "", texthl = "LspDiagnosticsSignWarning" },
-            hint = { text = "", texthl = "LspDiagnosticsSignHint" },
-            information = { text = "", texthl = "LspDiagnosticsSignInformation" },
+            Error = " ",
+            Warn = " ",
+            Hint = " ",
+            Info = " ",
           },
           -- Automatically format on save
           autoformat = false,
@@ -115,9 +114,10 @@ return {
 
             -- Diagnostics
             -- Set signs
-                for type, opts in pairs(opts.signs) do
-                    vim.fn.sign_define("LspDiagnosticsSign" .. type, opts)
-                end
+            for name, icon in pairs(opts.signs) do
+                name = "DiagnosticSign" .. name
+                vim.fn.sign_define(name, { text = icon, texthl = name, numhl = "" })
+            end
             vim.diagnostic.config(opts.diagnostics)
 
             local servers = opts.servers

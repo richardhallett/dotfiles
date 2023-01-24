@@ -188,4 +188,19 @@ return {
         },
     },
 
+    -- Better terminal support
+    {
+        "akinsho/nvim-toggleterm.lua",
+        cmd = { "ToggleTerm" },
+        keys = {
+            { "<leader>tf", "<cmd>ToggleTerm direction=float<cr>", desc = "Toggle Terminal (Float)" },
+        },
+        config = function(_, opts)
+            -- Set escape sequence to exit terminal
+            opts.on_open = function(term)
+                vim.api.nvim_buf_set_keymap(term.bufnr, "t", "<Esc>", "<C-\\><C-n>", { noremap = true })
+            end
+            require("toggleterm").setup(opts)
+        end,
+    },
 }

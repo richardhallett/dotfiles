@@ -8,6 +8,7 @@
 - link:
     ~/.dotfiles: ''
     ~/.irssi:
+    ~/.i3:
     ~/.bash:
     ~/.bashrc:
       force: true

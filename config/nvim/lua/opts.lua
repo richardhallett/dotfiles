@@ -36,3 +36,8 @@ opt.splitright = true -- bool: Place new window to right of current one
 opt.splitbelow = true -- bool: Place new window below the current one
 
 opt.completeopt = "menu,menuone,noinsert" -- str:  Completion options
+
+-- [[ Misc ]]
+-- Use system clipboard
+opt.clipboard = "unnamedplus"
+

@@ -1,6 +1,10 @@
 require('opts')
 require('keys')
 
+-- Eagerly disable netrw before we do anything
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
 -- Bootstrap lazy plugin manager
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then

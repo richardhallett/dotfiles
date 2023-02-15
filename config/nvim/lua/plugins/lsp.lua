@@ -62,6 +62,13 @@ return {
         ---@param opts PluginLspOpts
         config = function(plugin, opts)
 
+            -- Show diagnostics in a floaing window when cursor hold
+            vim.api.nvim_create_autocmd("CursorHold", {
+                callback = function()
+                    vim.diagnostic.open_float(nil, { focusable = false }) 
+                end,
+            })
+
             -- Attach to lsp and setup keymaps and autoformat
             vim.api.nvim_create_autocmd("LspAttach", {
                 callback = function(args)

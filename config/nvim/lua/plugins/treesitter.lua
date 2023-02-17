@@ -43,6 +43,7 @@ return {
             "ruby",
             "go",
             "rust",
+            "toml",
             "query",
             "regex",
             "tsx",

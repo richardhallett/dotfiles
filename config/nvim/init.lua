@@ -15,4 +15,4 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 -- Load plugins specs in plugins module i.e ./plugins
-require("lazy").setup("plugins")
+require("lazy").setup({{import = "plugins"}, {import = "plugins.lang"}})

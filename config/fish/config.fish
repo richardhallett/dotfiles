@@ -12,6 +12,7 @@ fish_add_path $HOME/.cargo/bin
 fish_add_path $HOME/go/bin
 fish_add_path $HOME/.rbenv/bin
 fish_add_path $HOME/n/bin
+fish_add_path $HOME/.cargo/bin/
 
 # Aliases
 alias ll 'exa --tree --level=2 -a --long --header --accessed'

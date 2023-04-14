@@ -19,6 +19,20 @@ vim.keymap.set({'n', 'v'}, '<Space>', '<Nop>', {
     silent = true
 })
 
+-- Disable arrow keys
+vim.keymap.set({'n', 'v', 'i'}, '<Up>', '<Nop>', {
+    silent = true
+})
+vim.keymap.set({'n', 'v', 'i'}, '<Down>', '<Nop>', {
+    silent = true
+})
+vim.keymap.set({'n', 'v', 'i'}, '<Left>', '<Nop>', {
+    silent = true
+})
+vim.keymap.set({'n', 'v', 'i'}, '<Right>', '<Nop>', {
+    silent = true
+})
+
 -- Move current line / block with Alt-j/k ala vscode.
 vim.keymap.set('i', '<A-j>', "<Esc>:m .+1<CR>==gi", {
     desc = 'Move current line / block with Alt-j/k ala vscode.'

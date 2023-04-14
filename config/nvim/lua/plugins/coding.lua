@@ -25,7 +25,14 @@ return {
                     ["<C-f>"] = cmp.mapping.scroll_docs(4),
                     ["<C-Space>"] = cmp.mapping.complete(),
                     ["<C-e>"] = cmp.mapping.abort(),
-                    ["<CR>"] = cmp.mapping.confirm({ select = false }),
+                    -- ["<CR>"] = cmp.mapping(function(fallback)
+                    --     if cmp.visible() then
+                    --         cmp.select_next_item({behaviour = cmp.SelectBehavior.Replace })
+                    --     else
+                    --         fallback()
+                    --     end
+                    -- end),
+                    ["<CR>"] = cmp.mapping.confirm({ select = false, behaviour = cmp.ConfirmBehavior.Replace }),
                 }),
                 sources = cmp.config.sources({
                     { name = "copilot", group_index = 2 },

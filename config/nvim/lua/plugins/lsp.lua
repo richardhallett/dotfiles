@@ -37,7 +37,7 @@ return {
           autoformat = false,
           -- LSP Server Settings
           servers = {
-            sumneko_lua = {
+            lua_ls = {
               settings = {
                 Lua = {
                   workspace = {

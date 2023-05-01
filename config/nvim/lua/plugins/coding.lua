@@ -152,7 +152,7 @@ return {
 
     -- copilot cmp plugin
     {
-        "zbirenbaum/copilot-cmp",
+        "NOBLES5E/copilot-cmp",
         dependencies = { "copilot.lua" },
         opts = {
             method = "getCompletionsCycling",

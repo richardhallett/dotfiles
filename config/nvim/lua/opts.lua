@@ -17,7 +17,7 @@ opt.fileencoding = 'utf8' -- str:  File encoding to use
 opt.syntax = "ON" -- str:  Allow syntax highlighting
 opt.termguicolors = true -- bool: If term supports ui color then enable
 opt.background = "light" -- gruvbox light mode
-opt.guifont = "JetBrainsMono\\ Nerd\\ Font\\ Mono:h16"
+opt.guifont = "JetBrainsMono\\ Nerd\\ Font\\ Mono:h11"
 
 -- [[ Search ]]
 opt.ignorecase = true -- bool: Ignore case in search patterns

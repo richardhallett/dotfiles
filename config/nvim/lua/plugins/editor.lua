@@ -14,7 +14,12 @@ return {
         keys = {
           { "<leader>tt", "<cmd>NvimTreeToggle<CR>", desc = "Toggle Tree" },
         },
-        opts = {},
+        opts = {
+            respect_buf_cwd = true,
+            update_focused_file = {
+                enable = true,
+            },
+        },
     },
 
     -- Which key to lookup keybindings

@@ -97,7 +97,8 @@ return {
                 dashboard.button("n", " " .. " New file", ":ene <CR>"),
                 dashboard.button("r", " " .. " Recent files", ":Telescope oldfiles <CR>"),
                 dashboard.button("g", " " .. " Find text", ":Telescope live_grep <CR>"),
-                dashboard.button("s", "勒" .. " Restore Session", ":SessionManager load_last_session <CR>"),
+                dashboard.button("s", "勒" .. " Restore Session", ":SessionManager load_last_session<CR>"),
+                dashboard.button("l", "l " .. " Load Session", ":SessionManager load_session<CR>"),
                 dashboard.button("q", " " .. " Quit", ":qa<CR>"),
             }
             for _, button in ipairs(dashboard.section.buttons.val) do

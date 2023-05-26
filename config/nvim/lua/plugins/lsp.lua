@@ -2,7 +2,7 @@ return {
     -- LSP Config
     {
         "neovim/nvim-lspconfig",
-        event = "BufReadPre",
+        event = {"BufReadPre", "BufNewFile"},
         dependencies = {
           { "folke/neoconf.nvim", cmd = "Neoconf", config = true },
           { "folke/neodev.nvim", opts = { experimental = { pathStrict = true } } },
@@ -11,7 +11,6 @@ return {
           "hrsh7th/cmp-nvim-lsp",
           "j-hui/fidget.nvim",
         },
-        ---@class PluginLspOpts
         opts = {
           -- options for vim.diagnostic.config()
           diagnostics = {
@@ -52,6 +51,7 @@ return {
                 },
               },
             },
+            gdscript = {},
           },
           -- Custom LSP Setup, return true to denote manual setup and not lspconfig
           -- Specify * as server to use function as a fallback for any server
@@ -59,9 +59,7 @@ return {
 
           },
         },
-        ---@param opts PluginLspOpts
         config = function(plugin, opts)
-
             -- Show diagnostics in a floaing window when cursor hold
             vim.api.nvim_create_autocmd("CursorHold", {
                 callback = function()
@@ -130,32 +128,45 @@ return {
             local servers = opts.servers
             local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
-            require("mason-lspconfig").setup({ ensure_installed = vim.tbl_keys(servers) })
-            require("mason-lspconfig").setup_handlers({
-                function(server)
-                    -- Check if server is enabled
-                    if servers[server] == false then
-                        return
-                    end
+            local function setup(server)
+                local server_opts = servers[server] or {}
+                server_opts.capabilities = capabilities
 
-                    local server_opts = servers[server] or {}
-                    server_opts.capabilities = capabilities
+                -- If server has custom setup, use it
+                if opts.setup[server] then
+                    opts.setup[server](server, server_opts)
+                    return
+                -- If there is a fallback setup, use it
+                elseif opts.setup["*"] then
+                    opts.setup["*"](server, server_opts)
+                    return
+                end
 
-                    -- If server has custom setup, use it
-                    if opts.setup[server] then
-                        if opts.setup[server](server, server_opts) then
-                        return
-                        end
-                    -- If there is a fallback setup, use it
-                    elseif opts.setup["*"] then
-                        if opts.setup["*"](server, server_opts) then
-                        return
-                        end
-                    end
-                    -- Default to lspconfig setup
-                    require("lspconfig")[server].setup(server_opts)
-                end,
+                -- Default to lspconfig setup
+                require("lspconfig")[server].setup(server_opts)
+            end
+
+            -- Get all available mason managed servers
+            mason_servers = vim.tbl_keys(require("mason-lspconfig.mappings.server").lspconfig_to_package)
+            local ensure_installed = {}
+
+            -- Loop through all servers and run setup if they are not in mason_servers
+            for server, server_opts in pairs(servers) do
+                if server_opts.mason == false or not vim.tbl_contains(mason_servers, server) then
+                    setup(server)
+                else
+                    -- Add to ensure_installed if it is a mason managed server
+                    table.insert(ensure_installed, server)
+                end
+            end
+
+            -- require("mason-lspconfig").setup({ ensure_installed = vim.tbl_keys(servers) })
+            -- Run the setup default for all remaining servers not set up,
+            require("mason-lspconfig").setup({
+                ensure_installed = ensure_installed,
+                handlers = { setup }
             })
+
         end,
     },
 

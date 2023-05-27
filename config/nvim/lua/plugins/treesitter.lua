@@ -9,10 +9,6 @@ return {
       dependencies = {
         "nvim-treesitter/nvim-treesitter-textobjects",
       },
-      keys = {
-        { "<c-space>", desc = "Increment selection" },
-        { "<bs>", desc = "Shrink selection", mode = "x" },
-      },
       opts = {
         highlight = { enable = true },
         indent = {
@@ -22,12 +18,6 @@ return {
         context_commentstring = { enable = true, enable_autocmd = false },
         incremental_selection = {
           enable = true,
-          keymaps = {
-            init_selection = "<c-space>",
-            node_incremental = "<c-space>",
-            scope_incremental = "<c-s>",
-            node_decremental = "<bs>",
-          },
         },
         ensure_installed = {
             "bash",

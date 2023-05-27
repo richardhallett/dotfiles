@@ -139,8 +139,9 @@ return {
     {
         "zbirenbaum/copilot.lua",
         cmd = "Copilot",
+        build = ":Copilot auth",
         opts = {
-                suggestion = { enabled = true },
+                suggestion = { enabled = true, auto_trigger=true },
                 panel = { enabled = false },
         },
         event = "VimEnter",
@@ -153,13 +154,23 @@ return {
 
     -- copilot cmp plugin
     {
-        "NOBLES5E/copilot-cmp",
+        "zbirenbaum/copilot-cmp",
         dependencies = { "copilot.lua" },
         opts = {
             method = "getCompletionsCycling",
         },
         config = function (_, opts)
-            require("copilot_cmp").setup(opts)
+            local copilot_cmp = require("copilot_cmp")
+            copilot_cmp.setup(opts)
+
+            -- vim.api.nvim_create_autocmd("LspAttach", {
+            --     callback = function(args)
+            --         local client = vim.lsp.get_client_by_id(args.data.client_id)
+            --         if client.name == "copilot" then
+            --             copilot_cmp._on_insert_enter({})
+            --         end
+            --     end,
+            -- })
         end
     },
 
@@ -178,6 +189,7 @@ return {
         end,
     },
 
+    -- Gives us nice inline virtual text
     {
         "theHamsta/nvim-dap-virtual-text",
         event = "BufRead",
@@ -189,6 +201,7 @@ return {
         end,
     },
 
+    -- Mason integration - Should be loaded after nvim-dap
     {
         "jay-babu/mason-nvim-dap.nvim",
         dependencies = { "mfussenegger/nvim-dap", "williamboman/mason.nvim" },
@@ -198,6 +211,7 @@ return {
         end,
     },
 
+    -- Nicer default UI for viewing debug dap information
     {
         "rcarriga/nvim-dap-ui",
         opts = { },

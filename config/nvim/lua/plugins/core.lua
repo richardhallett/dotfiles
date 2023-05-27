@@ -6,8 +6,8 @@ return {
     {
         "shatur/neovim-session-manager",
         init = function()
-            vim.keymap.set("n", "<leader>qs", "<cmd>SessionManager save_current_session<cr>", { desc = "Save session" })
-            vim.keymap.set("n", "<leader>ql", "<cmd>SessionManager load_session<cr>", { desc = "Load session" })
+            vim.keymap.set("n", "<leader>qs", "<cmd>SessionManager! save_current_session<cr>", { desc = "Save session" })
+            vim.keymap.set("n", "<leader>ql", "<cmd>SessionManager! load_session<cr>", { desc = "Load session" })
         end,
         config = function(_, opts)
             require("session_manager").setup({

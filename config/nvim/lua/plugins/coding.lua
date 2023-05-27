@@ -35,11 +35,12 @@ return {
                     ["<CR>"] = cmp.mapping.confirm({ select = false, behaviour = cmp.ConfirmBehavior.Replace }),
                 }),
                 sources = cmp.config.sources({
-                    { name = "copilot", group_index = 2 },
-                    { name = "nvim_lsp", group_index = 2},
-                    { name = "luasnip", group_index = 2},
-                    { name = "buffer", group_index = 2},
-                    { name = "path", group_index = 2},
+                    { name = "nvim_lsp", group_index = 1},
+                    { name = "luasnip", group_index = 1},
+                    { name = "buffer", group_index = 3},
+                    { name = "path", group_index = 1},
+                    { name = "crates", group_index = 1},
+                    { name = "copilot", group_index = 4 },
                 }),
                 formatting = {
                     format = lspkind.cmp_format({
@@ -161,4 +162,48 @@ return {
             require("copilot_cmp").setup(opts)
         end
     },
+
+
+    -- Debugging nvim-dap
+    {
+        "mfussenegger/nvim-dap",
+        event = "BufRead",
+        dependencies = {
+            "theHamsta/nvim-dap-virtual-text",
+            "nvim-telescope/telescope.nvim",
+            "nvim-telescope/telescope-dap.nvim",
+        },
+        config = function()
+            require('telescope').load_extension('dap')
+        end,
+    },
+
+    {
+        "theHamsta/nvim-dap-virtual-text",
+        event = "BufRead",
+        dependencies = {
+            "nvim-telescope/telescope.nvim",
+        },
+        config = function()
+            require("nvim-dap-virtual-text").setup()
+        end,
+    },
+
+    {
+        "jay-babu/mason-nvim-dap.nvim",
+        dependencies = { "mfussenegger/nvim-dap", "williamboman/mason.nvim" },
+        cmd = { "DapInstall", "DapUninstall" },
+        config = function(plugin, opts)
+            require("mason-nvim-dap").setup(opts)
+        end,
+    },
+
+    {
+        "rcarriga/nvim-dap-ui",
+        opts = { },
+        config = function()
+            require("dapui").setup()
+        end,
+      },
+
 }

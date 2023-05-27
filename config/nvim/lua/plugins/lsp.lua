@@ -160,7 +160,6 @@ return {
                 end
             end
 
-            -- require("mason-lspconfig").setup({ ensure_installed = vim.tbl_keys(servers) })
             -- Run the setup default for all remaining servers not set up,
             require("mason-lspconfig").setup({
                 ensure_installed = ensure_installed,

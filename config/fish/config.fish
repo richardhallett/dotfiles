@@ -22,3 +22,4 @@ alias ll 'exa --tree --level=2 -a --long --header --accessed'
 # Opt out of .net telemetry
 set -x DOTNET_CLI_TELEMETRY_OPTOUT 1
 
+set -x GODOT4 $HOME/.local/bin/godot

@@ -23,6 +23,7 @@
       path: config/alacritty/alacritty.yml
     ~/.config/mimeapps.list:
       path: config/mimeapps.list
+    ~/.profile:
 
 - create:
     - ~/.vim/undo-history

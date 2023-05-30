@@ -58,6 +58,3 @@ fi
 
 # Docker CE exports
 export DOCKER_HOST=unix:///run/user/1000/docker.sock
-
-# Godot4 loc
-export GODOT4=$HOME/.local/bin/godot

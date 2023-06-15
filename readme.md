@@ -27,4 +27,4 @@ These are typically what I have setup, depending on linux package manamgent to b
 - starship - Shell prompt
 - emoji font e.g. noto-fonts-emoji (depending on linux distro may not be required)
 - nvim - Editor
--
+- git-delta - Better pager for git

@@ -18,3 +18,13 @@ git clone https://github.com/richardhallett/dotfiles ~/.dotfiles && cd ~/.dotfil
 # link patched symbol fonts
 ./install -c install-fonts.conf.yaml
 ```
+
+# Packages to install
+
+These are typically what I have setup, depending on linux package manamgent to be install manually.
+
+- fish - Shell
+- starship - Shell prompt
+- emoji font e.g. noto-fonts-emoji (depending on linux distro may not be required)
+- nvim - Editor
+-

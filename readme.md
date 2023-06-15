@@ -21,10 +21,15 @@ git clone https://github.com/richardhallett/dotfiles ~/.dotfiles && cd ~/.dotfil
 
 # Packages to install
 
-These are typically what I have setup, depending on linux package manamgent to be install manually.
+These are typically what I have setup, depending on linux package management to be installed manually.
 
+- alacritty - terminal
 - fish - Shell
 - starship - Shell prompt
 - emoji font e.g. noto-fonts-emoji (depending on linux distro may not be required)
 - nvim - Editor
+
+## Extra tools
 - git-delta - Better pager for git
+- bottom - Process Monitor replacement
+- lazygit - Terminal UI for git

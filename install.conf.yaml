@@ -19,8 +19,9 @@
     ~/.config/nvim:
       glob: true
       path: config/nvim/*
-    ~/.config/alacritty/alacritty.yml:
-      path: config/alacritty/alacritty.yml
+    ~/.config/alacritty:
+      glob: true
+      path: config/alacritty/*
     ~/.config/mimeapps.list:
       path: config/mimeapps.list
     ~/.profile:

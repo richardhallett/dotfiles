@@ -21,3 +21,6 @@ alias ll 'exa --tree --level=2 -a --long --header --accessed'
 # Env variables
 # Opt out of .net telemetry
 set -x DOTNET_CLI_TELEMETRY_OPTOUT 1
+
+# Starship setup
+starship init fish | source

@@ -8,11 +8,13 @@
 - link:
     ~/.dotfiles: ''
     ~/.irssi:
-    ~/.i3:
     ~/.bash:
     ~/.bashrc:
       force: true
     ~/.gitconfig:
+    ~/.config/i3:
+      glob: true
+      path: config/i3/*
     ~/.config/fish:
       glob: true
       path: config/fish/*
@@ -28,7 +30,6 @@
 
 - create:
     - ~/.vim/undo-history
-    - ~/projects
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]

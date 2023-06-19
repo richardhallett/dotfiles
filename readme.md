@@ -8,7 +8,7 @@ I use dotbot to manage: https://github.com/anishathalye/dotbot
 git clone https://github.com/richardhallett/dotfiles ~/.dotfiles && cd ~/.dotfiles && ./install
 ```
 
-## Optional
+## Optional - Only if not managing via a package manager (which you should)
 ```bash
 # Download and setup links for core binaries
 ./install -vv -c install-core-binaries-linux.conf.yaml
@@ -33,3 +33,8 @@ These are typically what I have setup, depending on linux package management to 
 - git-delta - Better pager for git
 - bottom - Process Monitor replacement
 - lazygit - Terminal UI for git
+- bat - better cat
+- fd - improved find
+- exa - Replacement for ls
+- ripgrep - improved grep
+- fzf - command line fuzzy finder

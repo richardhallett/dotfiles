@@ -89,7 +89,7 @@ bindsym $mod+Ctrl+m exec pavucontrol
 
 # Start Applications
 bindsym $mod+F2 exec firefox
-bindsym $mod+F3 exec thunar
+#bindsym $mod+F3 exec thunar
 
 # focus_follows_mouse no
 

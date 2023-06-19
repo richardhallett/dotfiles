@@ -70,12 +70,6 @@ bindsym $mod+Return exec alacritty
 # kill focused window
 bindsym $mod+q kill
 
-# start program launcher
-bindsym $mod+d exec --no-startup-id dmenu_recency
-
-# launch categorized menu
-bindsym $mod+z exec --no-startup-id morc_menu
-
 
 ################################################################################################
 ## sound-section - DO NOT EDIT if you wish to automatically upgrade Alsa -> Pulseaudio later! ##
@@ -94,20 +88,8 @@ bindsym $mod+Ctrl+m exec pavucontrol
 # bindsym XF86MonBrightnessDown exec "xbacklight -dec 10; notify-send 'brightness down'"
 
 # Start Applications
-bindsym $mod+Ctrl+b exec terminal -e 'bmenu'
 bindsym $mod+F2 exec firefox
-bindsym $mod+F3 exec pcmanfm
-# bindsym $mod+F3 exec ranger
-bindsym $mod+Shift+F3 exec pcmanfm_pkexec
-bindsym $mod+F5 exec terminal -e 'mocp'
-bindsym $mod+t exec --no-startup-id pkill picom
-bindsym $mod+Ctrl+t exec --no-startup-id picom -b
-bindsym $mod+Shift+d --release exec "killall dunst; exec notify-send 'restart dunst'"
-bindsym Print exec --no-startup-id i3-scrot
-bindsym $mod+Print --release exec --no-startup-id i3-scrot -w
-bindsym $mod+Shift+Print --release exec --no-startup-id i3-scrot -s
-bindsym $mod+Shift+h exec xdg-open /usr/share/doc/manjaro/i3_help.pdf
-bindsym $mod+Ctrl+x --release exec --no-startup-id xkill
+bindsym $mod+F3 exec thunar
 
 # focus_follows_mouse no
 
@@ -183,6 +165,8 @@ set $ws5 5
 set $ws6 6
 set $ws7 7
 set $ws8 8
+set $ws9 9
+set $ws10 10
 
 # Open applications on specific workspaces
 # assign [class="Thunderbird"] $ws1
@@ -197,6 +181,9 @@ for_window [class="Clipgrab"] floating enable
 for_window [title="File Transfer*"] floating enable
 for_window [class="fpakman"] floating enable
 for_window [class="Galculator"] floating enable border pixel 1
+for_window [class="Xsane" instance="xsane"] floating enable
+for_window [class="Blueberry.py" instance="blueberry.py"] floating enable
+for_window [class="Bluetooth-sendto" instance="bluetooth-sendto"] floating enable
 for_window [class="GParted"] floating enable border normal
 for_window [title="i3_help"] floating enable sticky enable border normal
 for_window [class="Lightdm-settings"] floating enable
@@ -207,7 +194,6 @@ for_window [title="MuseScore: Play Panel"] floating enable
 for_window [class="Nitrogen"] floating enable sticky enable border normal
 for_window [class="Oblogout"] fullscreen enable
 for_window [class="octopi"] floating enable
-for_window [title="About Pale Moon"] floating enable
 for_window [class="Pamac-manager"] floating enable
 for_window [class="Pavucontrol"] floating enable
 for_window [class="qt5ct"] floating enable sticky enable border normal
@@ -275,21 +261,34 @@ mode "resize" {
 # Lock screen
 bindsym $mod+9 exec --no-startup-id blurlock
 
-# Autostart applications
+##############################
+### Autostart applications ###
+##############################
+
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-exec --no-startup-id nitrogen --restore; sleep 1; picom -b
-exec --no-startup-id manjaro-hello
-exec --no-startup-id nm-applet
-exec --no-startup-id xfce4-power-manager
-exec --no-startup-id pamac-tray
-exec --no-startup-id clipit
-# exec --no-startup-id blueman-applet
-# exec_always --no-startup-id sbxkb
-exec --no-startup-id start_conky_maia
-# exec --no-startup-id start_conky_green
-exec --no-startup-id xautolock -time 10 -locker blurlock
-exec_always --no-startup-id ff-theme-util
-exec_always --no-startup-id fix_xcursor
+
+# Network manager
+#exec --no-startup-id nm-applet
+# Bluetooth management
+#exec --no-startup-id blueberry-tray
+#exec --no-startup-id xfce4-power-manager
+#exec_always --no-startup-id fix_xcursor
+
+exec --no-startup-id dex --autostart --environment i3
+
+# Dunst notification deamon
+exec --no-startup-id /usr/bin/dunst
+
+# numlock enabled
+exec --no-startup-id numlockx on
+
+# set wallpaper
+# exec --no-startup-id sleep 2 && nitrogen --restore
+# exec --no-startup-id sleep 1 && feh --bg-fill /usr/share/endeavouros/backgrounds/endeavouros-wallpaper.png
+
+# set powersavings for display:
+exec --no-startup-id xset s 480 dpms 600 600 600
+
 
 # Color palette used for the terminal ( ~/.Xresources file )
 # Colors are gathered based on the documentation:
@@ -354,7 +353,10 @@ bar {
 # hide/unhide i3status bar
 bindsym $mod+m bar mode toggle
 
-# Theme colors
+######################################
+# color settings for bar and windows #
+######################################
+
 # class                   border  backgr. text    indic.   child_border
   client.focused          #556064 #556064 #80FFF9 #FDF6E3
   client.focused_inactive #2F3D44 #2F3D44 #1ABC9C #454948
@@ -421,5 +423,8 @@ mode "$mode_gaps_outer" {
         bindsym Escape mode "default"
 }
 
-# Include specific host config for overriding default behaviour
+#################################################################
+# Include specific host config for overriding default behaviour #
+#################################################################
+
 include ~/.config/i3/hosts/`hostname`.conf

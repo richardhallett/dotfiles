@@ -14,6 +14,7 @@ fish_add_path $HOME/.rbenv/bin
 fish_add_path $HOME/n/bin
 fish_add_path $HOME/.cargo/bin/
 fish_add_path /usr/share/dotnet/
+fish_add_path $HOME/.nix-profile/bin/
 
 # Aliases
 alias ll 'exa --tree --level=2 -a --long --header --accessed'

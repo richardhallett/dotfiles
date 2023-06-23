@@ -312,7 +312,7 @@ bar {
 	bindsym button4 nop
 	bindsym button5 nop
 
-        font pango: Noto Sans Regular 10
+        font pango: Noto Sans Regular 11
 
 	strip_workspace_numbers yes
 

@@ -5,3 +5,7 @@ export BROWSER=/usr/bin/firefox
 export GODOT4=$HOME/.local/bin/godot
 export TERMINAL=alacritty
 export BAT_THEME="gruvbox-light"
+
+if [ -d "$HOME/.local/bin" ] && (! echo $PATH | grep -q "$HOME/.local/bin"); then
+    export PATH="$HOME/.local/bin:$PATH"
+fi

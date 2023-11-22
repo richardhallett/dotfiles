@@ -29,6 +29,12 @@
     ~/.profile:
     ~/.config/picom/picom.conf:
       path: config/picom/picom.conf
+    ~/.config/cheat/conf.yml:
+      path: config/cheat/conf.yml
+    ~/.config/cheat/cheatsheets/personal:
+      glob: true
+      path: config/cheat/cheatsheets/personal/*
+
 
 - create:
     - ~/.vim/undo-history

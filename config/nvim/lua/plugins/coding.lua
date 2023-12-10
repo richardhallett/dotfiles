@@ -75,6 +75,9 @@ return {
     -- Snippet engine
     {
         "L3MON4D3/LuaSnip",
+        build = (not jit.os:find("Windows"))
+        and "echo 'NOTE: jsregexp is optional'; make install_jsregexp"
+      or nil,
         dependencies = {
             "rafamadriz/friendly-snippets",
             config = function()

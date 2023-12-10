@@ -33,13 +33,19 @@ return {
     {
         "lukas-reineke/indent-blankline.nvim",
         event = "BufReadPre",
+        main = "ibl",
         opts = {
-            char = '┊',
-            buftype_exclude = { "terminal", "nofile" },
-            filetype_exclude = UI_BUFFERS,
-            show_trailing_blankline_indent = false,
-            show_current_context = false,
-            show_end_of_line = false,
+            indent = {
+                char = '┊',
+                tab_char = '┊',
+            },
+            scope = {
+                enabled = false,
+            },
+            exclude = {
+                filetypes = UI_BUFFERS,
+                buftypes = { "terminal", "nofile" },
+            },
         },
     },
 

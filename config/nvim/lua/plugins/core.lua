@@ -12,7 +12,7 @@ return {
                 "~/projects/datacite/*",
                 "~/projects/personal/*",
             },
-            load_session_on_startup = false,
+            last_session_on_startup = false,
         },
         init = function()
             -- enable saving the state of plugins in the session

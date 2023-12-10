@@ -20,6 +20,10 @@ return {
                 enable = true,
             },
         },
+        config = function(_, opts)
+            local tree = require("nvim-tree")
+            tree.setup(opts)
+        end,
     },
 
     -- Which key to lookup keybindings
@@ -112,6 +116,11 @@ return {
                     },
                 },
             },
+            pickers = {
+                find_files = {
+                  follow = true
+                }
+            }
         },
         config = function(_, opts)
             local telescope = require("telescope")

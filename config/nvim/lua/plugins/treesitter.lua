@@ -22,7 +22,7 @@ return {
         ensure_installed = {
             "bash",
             "fish",
-            "help",
+            "vimdoc",
             "html",
             "javascript",
             "json",

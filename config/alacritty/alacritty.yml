@@ -114,7 +114,7 @@ import:
 # Font configuration
 font:
   normal:
-    family: JetBrainsMono Nerd Font Mono
+    family: JetBrainsMono NFM
     style: Regular
 
   # Point size

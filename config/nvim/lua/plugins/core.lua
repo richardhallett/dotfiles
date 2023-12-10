@@ -2,17 +2,28 @@ return {
     -- Used by other libraries i.e. telescope
     { "nvim-lua/plenary.nvim", lazy = true },
 
-    -- Session management
+    -- Session management with neovim-project
     {
-        "shatur/neovim-session-manager",
+        "coffebar/neovim-project",
+        opts = {
+            projects = { -- define project roots
+                "~/.config/*",
+                "~/projects/*",
+                "~/projects/datacite/*",
+                "~/projects/personal/*",
+            },
+            load_session_on_startup = false,
+        },
         init = function()
-            vim.keymap.set("n", "<leader>qs", "<cmd>SessionManager! save_current_session<cr>", { desc = "Save session" })
-            vim.keymap.set("n", "<leader>ql", "<cmd>SessionManager! load_session<cr>", { desc = "Load session" })
+            -- enable saving the state of plugins in the session
+            vim.opt.sessionoptions:append("globals") -- save global variables that start with an uppercase letter and contain at least one lowercase letter.
         end,
-        config = function(_, opts)
-            require("session_manager").setup({
-                autoload_mode = require('session_manager.config').AutoloadMode.Disabled
-            })
-        end,
-    }
+        dependencies = {
+            { "nvim-lua/plenary.nvim" },
+            { "nvim-telescope/telescope.nvim", tag = "0.1.4" },
+            { "Shatur/neovim-session-manager" },
+        },
+        lazy = false,
+        priority = 100,
+    },
 }

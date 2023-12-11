@@ -11,6 +11,7 @@ return {
                 "~/projects/*",
                 "~/projects/datacite/*",
                 "~/projects/personal/*",
+                "~/projects/gamedev/*",
             },
             last_session_on_startup = false,
         },

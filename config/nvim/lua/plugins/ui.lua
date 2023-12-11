@@ -29,6 +29,12 @@ return {
         },
     },
 
+    -- Automatic switching for relative line numbers when in different modes
+    {
+        "sitiom/nvim-numbertoggle",
+        event = "BufReadPre",
+    },
+
     -- Add visible indentation
     {
         "lukas-reineke/indent-blankline.nvim",

@@ -34,6 +34,9 @@
     ~/.config/cheat/cheatsheets/personal:
       glob: true
       path: config/cheat/cheatsheets/personal/*
+    ~/.config/zellij:
+      glob: true
+      path: config/zellij/*
 
 
 - create:

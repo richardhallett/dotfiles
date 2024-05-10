@@ -72,7 +72,7 @@ return {
                 previewer = false
             }) end, desc = "Search in current buffer" },
             { "<leader>fg", function() require('telescope.builtin').live_grep() end, desc = "Find in Files (Grep)" },
-            { "<leader>ff", function() require('telescope.builtin').git_files() end, desc = "Find Files (cwd)" },
+            { "<leader>ff", function() require('telescope.builtin').find_files() end, desc = "Find Files (cwd)" },
             { "<leader>fb", function() require('telescope.builtin').buffers() end, desc = "Find Buffers" },
             { "<leader>fw", function() require('telescope.builtin').grep_string() end, desc = "Find current word" },
             { "<leader>fh", function() require('telescope.builtin').help_tags() end, desc = "Find in Help" },

@@ -144,8 +144,8 @@ return {
         cmd = "Copilot",
         build = ":Copilot auth",
         opts = {
-                suggestion = { enabled = true, auto_trigger=true },
-                panel = { enabled = false },
+              suggestion = { enabled = false },
+              panel = { enabled = false },
         },
         event = "VimEnter",
         config = function(_, opts)
@@ -165,7 +165,7 @@ return {
         config = function (_, opts)
             local copilot_cmp = require("copilot_cmp")
             copilot_cmp.setup(opts)
-
+            
             -- vim.api.nvim_create_autocmd("LspAttach", {
             --     callback = function(args)
             --         local client = vim.lsp.get_client_by_id(args.data.client_id)

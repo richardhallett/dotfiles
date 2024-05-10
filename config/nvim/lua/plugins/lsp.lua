@@ -147,7 +147,7 @@ return {
             end
 
             -- Get all available mason managed servers
-            mason_servers = vim.tbl_keys(require("mason-lspconfig.mappings.server").lspconfig_to_package)
+            local mason_servers = vim.tbl_keys(require("mason-lspconfig.mappings.server").lspconfig_to_package)
             local ensure_installed = {}
 
             -- Loop through all servers and run setup if they are not in mason_servers

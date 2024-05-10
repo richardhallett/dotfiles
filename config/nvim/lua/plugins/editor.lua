@@ -72,11 +72,12 @@ return {
                 previewer = false
             }) end, desc = "Search in current buffer" },
             { "<leader>fg", function() require('telescope.builtin').live_grep() end, desc = "Find in Files (Grep)" },
-            { "<leader>ff", function() require('telescope.builtin').find_files() end, desc = "Find in Files (cwd)" },
-            { "<leader>fb", function() require('telescope.builtin').buffers() end, desc = "Find in Buffers" },
+            { "<leader>ff", function() require('telescope.builtin').git_files() end, desc = "Find Files (cwd)" },
+            { "<leader>fb", function() require('telescope.builtin').buffers() end, desc = "Find Buffers" },
             { "<leader>fw", function() require('telescope.builtin').grep_string() end, desc = "Find current word" },
             { "<leader>fh", function() require('telescope.builtin').help_tags() end, desc = "Find in Help" },
             { "<leader>fd", function() require('telescope.builtin').diagnostics() end, desc = "Find in Diagnostics" },
+            { "<leader>ft", function() require('telescope').extensions.file_browser.file_browser() end, desc = "Find file browser" },
             {
                 "<leader>fs",
                 function() require('telescope.builtin').lsp_document_symbols({
@@ -127,7 +128,13 @@ return {
             local telescope = require("telescope")
             telescope.setup(opts)
             telescope.load_extension("fzf")
+            telescope.load_extension("file_browser")
         end,
+    },
+
+    {
+        "nvim-telescope/telescope-file-browser.nvim",
+        dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
     },
 
      -- Gitsigns

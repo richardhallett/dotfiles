@@ -16,6 +16,7 @@ fish_add_path $HOME/.cargo/bin/
 fish_add_path /usr/share/dotnet/
 fish_add_path $HOME/.nix-profile/bin/
 fish_add_path /usr/lib/emscripten
+fish_add_path /home/rph/.nimble/bin
 
 # Aliases
 alias ll 'exa --tree --level=2 -a --long --header --accessed'
@@ -27,3 +28,6 @@ set -x CHEAT_USE_FZF true
 
 # Starship setup
 starship init fish | source
+
+# Load rbenv into shell automatically
+status --is-interactive; and rbenv init - fish | source

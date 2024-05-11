@@ -51,7 +51,6 @@ return {
                 },
               },
             },
-            gdscript = {},
           },
           -- Custom LSP Setup, return true to denote manual setup and not lspconfig
           -- Specify * as server to use function as a fallback for any server

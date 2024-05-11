@@ -40,6 +40,7 @@ return {
             "typescript",
             "vim",
             "yaml",
+            "gdscript",
           },
       },
       config = function(plugin, opts)

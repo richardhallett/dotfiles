@@ -1,5 +1,14 @@
 return {
 
+    {
+        "neovim/nvim-lspconfig",
+        opts = {
+            servers = {
+                gdscript = {
+                }
+            }
+        }
+    },
     -- Godot dap config
     {
         "mfussenegger/nvim-dap",
@@ -22,5 +31,4 @@ return {
             }
         end,
     },
-
 }

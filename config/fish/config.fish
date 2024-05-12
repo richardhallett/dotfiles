@@ -30,4 +30,4 @@ set -x CHEAT_USE_FZF true
 starship init fish | source
 
 # Load rbenv into shell automatically
-status --is-interactive; and rbenv init - fish | source
+#status --is-interactive; and rbenv init - fish | source

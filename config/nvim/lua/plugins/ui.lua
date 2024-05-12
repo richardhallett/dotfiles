@@ -8,7 +8,7 @@ return {
         "nvim-lualine/lualine.nvim",
         event = "VeryLazy",
         opts = {
-            theme = "gruvbox_light",
+            theme = "gruvbox_dark",
             extensions = {},
         }
     },

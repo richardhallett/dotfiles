@@ -16,7 +16,7 @@ opt.fileencoding = 'utf8' -- str:  File encoding to use
 -- [[ Theme ]]
 opt.syntax = "ON" -- str:  Allow syntax highlighting
 opt.termguicolors = true -- bool: If term supports ui color then enable
-opt.background = "light" -- gruvbox light mode
+opt.background = "dark" -- gruvbox dark mode
 opt.guifont = "JetBrainsMono\\ Nerd\\ Font\\ Mono:h11"
 
 -- [[ Search ]]

@@ -12,6 +12,7 @@
     ~/.bashrc:
       force: true
     ~/.gitconfig:
+    ~/.xinitrc:
     ~/.config/i3:
       glob: true
       path: config/i3/*

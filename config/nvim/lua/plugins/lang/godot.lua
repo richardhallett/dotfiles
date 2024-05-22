@@ -1,6 +1,7 @@
 
-local projectfile = vim.fn.getcwd() .. '/project.godot'
+local projectfile = io.open(vim.fn.getcwd()..'/project.godot', 'r')
 if projectfile then
+    io.close(projectfile)
     vim.fn.serverstart './godothost'
 end
 

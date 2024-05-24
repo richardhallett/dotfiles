@@ -77,6 +77,8 @@ return {
             { "<leader>fw", function() require('telescope.builtin').grep_string() end, desc = "Find current word" },
             { "<leader>fh", function() require('telescope.builtin').help_tags() end, desc = "Find in Help" },
             { "<leader>fd", function() require('telescope.builtin').diagnostics() end, desc = "Find in Diagnostics" },
+            { "<leader>fp", function() require('telescope.builtin').lsp_document_symbols() end, desc = "Find Document Symbols" },
+            { "<leader>fP", function() require('telescope.builtin').lsp_workspace_symbols() end, desc = "Find Workspace Symbols" },
             { "<leader>ft", function() require('telescope').extensions.file_browser.file_browser() end, desc = "Find file browser" },
             {
                 "<leader>fs",

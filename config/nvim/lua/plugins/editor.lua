@@ -12,7 +12,7 @@ return {
         dependencies = { "nvim-web-devicons" },
         cmd = "NvimTreeToggle",
         keys = {
-          { "<leader>tt", "<cmd>NvimTreeToggle<CR>", desc = "Toggle Tree" },
+            { "<leader>tt", "<cmd>NvimTreeToggle<CR>", desc = "Toggle Tree" },
         },
         opts = {
             respect_buf_cwd = true,
@@ -47,7 +47,7 @@ return {
                 ["<leader>gh"] = { name = "+hunks" },
                 ["<leader>q"] = { name = "+quit/session" },
                 ["<leader>x"] = { name = "+diagnostics/quickfix" },
-              })
+            })
         end,
     },
 
@@ -64,38 +64,45 @@ return {
     {
         "nvim-telescope/telescope.nvim",
         cmd = "Telescope",
-        dependencies = { "plenary.nvim",  { "nvim-telescope/telescope-fzf-native.nvim", build = "make", cond = vim.fn.executable "make" == 1 } },
+        dependencies = { "plenary.nvim", { "nvim-telescope/telescope-fzf-native.nvim", build = "make", cond = vim.fn.executable "make" == 1 } },
         version = false,
         keys = {
-            { "<leader>/", function() require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
-                winblend = 10,
-                previewer = false
-            }) end, desc = "Search in current buffer" },
-            { "<leader>fg", function() require('telescope.builtin').live_grep() end, desc = "Find in Files (Grep)" },
-            { "<leader>ff", function() require('telescope.builtin').find_files() end, desc = "Find Files (cwd)" },
-            { "<leader>fb", function() require('telescope.builtin').buffers() end, desc = "Find Buffers" },
-            { "<leader>fw", function() require('telescope.builtin').grep_string() end, desc = "Find current word" },
-            { "<leader>fh", function() require('telescope.builtin').help_tags() end, desc = "Find in Help" },
-            { "<leader>fd", function() require('telescope.builtin').diagnostics() end, desc = "Find in Diagnostics" },
-            { "<leader>fp", function() require('telescope.builtin').lsp_document_symbols() end, desc = "Find Document Symbols" },
-            { "<leader>fP", function() require('telescope.builtin').lsp_workspace_symbols() end, desc = "Find Workspace Symbols" },
+            {
+                "<leader>/",
+                function()
+                    require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
+                        winblend = 10,
+                        previewer = false
+                    })
+                end,
+                desc = "Search in current buffer"
+            },
+            { "<leader>fg", function() require('telescope.builtin').live_grep() end,                    desc = "Find in Files (Grep)" },
+            { "<leader>ff", function() require('telescope.builtin').find_files() end,                   desc = "Find Files (cwd)" },
+            { "<leader>fb", function() require('telescope.builtin').buffers() end,                      desc = "Find Buffers" },
+            { "<leader>fw", function() require('telescope.builtin').grep_string() end,                  desc = "Find current word" },
+            { "<leader>fh", function() require('telescope.builtin').help_tags() end,                    desc = "Find in Help" },
+            { "<leader>fd", function() require('telescope.builtin').diagnostics() end,                  desc = "Find in Diagnostics" },
+            { "<leader>fp", function() require('telescope.builtin').lsp_document_symbols() end,         desc = "Find Document Symbols" },
+            { "<leader>fP", function() require('telescope.builtin').lsp_workspace_symbols() end,        desc = "Find Workspace Symbols" },
             { "<leader>ft", function() require('telescope').extensions.file_browser.file_browser() end, desc = "Find file browser" },
             {
                 "<leader>fs",
-                function() require('telescope.builtin').lsp_document_symbols({
-                    symbols = {
-                        "Class",
-                        "Function",
-                        "Method",
-                        "Constructor",
-                        "Interface",
-                        "Module",
-                        "Struct",
-                        "Trait",
-                        "Field",
-                        "Property",
-                    },
-                })
+                function()
+                    require('telescope.builtin').lsp_document_symbols({
+                        symbols = {
+                            "Class",
+                            "Function",
+                            "Method",
+                            "Constructor",
+                            "Interface",
+                            "Module",
+                            "Struct",
+                            "Trait",
+                            "Field",
+                            "Property",
+                        },
+                    })
                 end,
                 desc = "Find Symbol",
             },
@@ -105,7 +112,7 @@ return {
                 prompt_prefix = " ",
                 selection_caret = " ",
                 mappings = {
-                i = {
+                    i = {
                         -- These enable the default behaviour for C-u and C-d
                         ['<C-u>'] = false,
                         ['<C-d>'] = false,
@@ -122,7 +129,7 @@ return {
             },
             pickers = {
                 find_files = {
-                  follow = true
+                    follow = true
                 }
             }
         },
@@ -139,7 +146,7 @@ return {
         dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
     },
 
-     -- Gitsigns
+    -- Gitsigns
     {
         "lewis6991/gitsigns.nvim",
         event = "BufReadPre",
@@ -147,8 +154,8 @@ return {
             signs = {
                 add = { text = "▎" },
                 change = { text = "▎" },
-                delete = { text = "契" },
-                topdelete = { text = "契" },
+                delete = { text = "_" },
+                topdelete = { text = "‾" },
                 changedelete = { text = "▎" },
                 untracked = { text = "░" },
             },
@@ -156,7 +163,7 @@ return {
                 local gs = package.loaded.gitsigns
 
                 local function map(mode, l, r, desc)
-                  vim.keymap.set(mode, l, r, { buffer = buffer, desc = desc })
+                    vim.keymap.set(mode, l, r, { buffer = buffer, desc = desc })
                 end
 
                 map("n", "]h", gs.next_hunk, "Next Hunk")
@@ -171,8 +178,7 @@ return {
                 map("n", "<leader>ghd", gs.diffthis, "Diff This")
                 map("n", "<leader>ghD", function() gs.diffthis("~") end, "Diff This ~")
                 map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>", "GitSigns Select Hunk")
-
-                end,
+            end,
         },
     },
 
@@ -197,7 +203,7 @@ return {
         "echasnovski/mini.bufremove",
         keys = {
             { "<leader>bd", function() require("mini.bufremove").delete(0, false) end, desc = "Delete Buffer" },
-            { "<leader>bD", function() require("mini.bufremove").delete(0, true) end, desc = "Delete Buffer (Force)" },
+            { "<leader>bD", function() require("mini.bufremove").delete(0, true) end,  desc = "Delete Buffer (Force)" },
         },
     },
 
@@ -207,8 +213,8 @@ return {
         cmd = { "TroubleToggle", "Trouble" },
         opts = { use_diagnostic_signs = true },
         keys = {
-        { "<leader>xx", "<cmd>TroubleToggle document_diagnostics<cr>", desc = "Document Diagnostics (Trouble)" },
-        { "<leader>xX", "<cmd>TroubleToggle workspace_diagnostics<cr>", desc = "Workspace Diagnostics (Trouble)" },
+            { "<leader>xx", "<cmd>TroubleToggle document_diagnostics<cr>",  desc = "Document Diagnostics (Trouble)" },
+            { "<leader>xX", "<cmd>TroubleToggle workspace_diagnostics<cr>", desc = "Workspace Diagnostics (Trouble)" },
         },
     },
 
@@ -226,5 +232,12 @@ return {
             end
             require("toggleterm").setup(opts)
         end,
+    },
+
+    -- hardtime - help to establish good vim workflow
+    {
+        "m4xshen/hardtime.nvim",
+        dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
+        opts = {}
     },
 }

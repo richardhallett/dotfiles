@@ -60,3 +60,7 @@ vim.keymap.set({ "i", "v", "n", "s" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Sav
 
 -- Quit
 vim.keymap.set("n", "<leader>qq", "<cmd>qa<cr>", { desc = "Quit all" })
+
+-- better indent
+vim.keymap.set("v", "<", "<gv", { desc = "Better indent" })
+vim.keymap.set("v", ">", ">gv", { desc = "Better indent" })

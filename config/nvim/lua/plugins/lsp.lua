@@ -2,61 +2,46 @@ return {
     -- LSP Config
     {
         "neovim/nvim-lspconfig",
-        event = {"BufReadPre", "BufNewFile"},
+        event = { "BufReadPre", "BufNewFile" },
         dependencies = {
-          { "folke/neoconf.nvim", cmd = "Neoconf", config = true },
-          { "folke/neodev.nvim", opts = { experimental = { pathStrict = true } } },
-          "mason.nvim",
-          "williamboman/mason-lspconfig.nvim",
-          "hrsh7th/cmp-nvim-lsp",
-          "j-hui/fidget.nvim",
+            { "folke/neoconf.nvim", cmd = "Neoconf",                                config = true },
+            { "folke/neodev.nvim",  opts = { experimental = { pathStrict = true } } },
+            "mason.nvim",
+            "williamboman/mason-lspconfig.nvim",
+            "hrsh7th/cmp-nvim-lsp",
+            "j-hui/fidget.nvim",
         },
         opts = {
-          -- options for vim.diagnostic.config()
-          diagnostics = {
-            virtual_text = false,
-            signs = true,
-            update_in_insert = true,
-            underline = true,
-            severity_sort = false,
-            float = {
-                border = 'rounded',
-                source = 'always',
-                header = '',
-                prefix = '',
-            },
-          },
-          signs = {
-            Error = " ",
-            Warn = " ",
-            Hint = " ",
-            Info = " ",
-          },
-          -- Automatically format on save
-          autoformat = false,
-          -- LSP Server Settings
-          servers = {
-            lua_ls = {
-              settings = {
-                Lua = {
-                  workspace = {
-                    checkThirdParty = false,
-                  },
-                  completion = {
-                    callSnippet = "Replace",
-                  },
-                  telemetry = {
-                    enable = false
-                  }
+            -- options for vim.diagnostic.config()
+            diagnostics = {
+                virtual_text = false,
+                signs = true,
+                update_in_insert = true,
+                underline = true,
+                severity_sort = false,
+                float = {
+                    border = 'rounded',
+                    source = 'always',
+                    header = '',
+                    prefix = '',
                 },
-              },
             },
-          },
-          -- Custom LSP Setup, return true to denote manual setup and not lspconfig
-          -- Specify * as server to use function as a fallback for any server
-          setup = {
+            signs = {
+                Error = " ",
+                Warn = " ",
+                Hint = " ",
+                Info = " ",
+            },
+            -- Automatically format on save
+            autoformat = false,
+            -- LSP Server Settings
+            servers = {
+            },
+            -- Custom LSP Setup, return true to denote manual setup and not lspconfig
+            -- Specify * as server to use function as a fallback for any server
+            setup = {
 
-          },
+            },
         },
         config = function(plugin, opts)
             -- Show diagnostics in a floaing window when cursor hold
@@ -73,14 +58,14 @@ return {
                     local client = vim.lsp.get_client_by_id(args.data.client_id)
 
                     local nmap = function(keys, func, desc)
-                    if desc then
-                        desc = 'LSP: ' .. desc
-                    end
+                        if desc then
+                            desc = 'LSP: ' .. desc
+                        end
 
-                    vim.keymap.set('n', keys, func, {
-                        buffer = buffer,
-                        desc = desc
-                    })
+                        vim.keymap.set('n', keys, func, {
+                            buffer = buffer,
+                            desc = desc
+                        })
                     end
 
                     nmap('<leader>rn', vim.lsp.buf.rename, 'Rename')
@@ -112,7 +97,6 @@ return {
                             end,
                         })
                     end
-
                 end,
             })
 
@@ -135,7 +119,7 @@ return {
                 if opts.setup[server] then
                     opts.setup[server](server, server_opts)
                     return
-                -- If there is a fallback setup, use it
+                    -- If there is a fallback setup, use it
                 elseif opts.setup["*"] then
                     opts.setup["*"](server, server_opts)
                     return
@@ -164,7 +148,6 @@ return {
                 ensure_installed = ensure_installed,
                 handlers = { setup }
             })
-
         end,
     },
 
@@ -182,7 +165,7 @@ return {
             for _, tool in ipairs(opts.ensure_installed) do
                 local p = mr.get_package(tool)
                 if not p:is_installed() then
-                 p:install()
+                    p:install()
                 end
             end
         end,

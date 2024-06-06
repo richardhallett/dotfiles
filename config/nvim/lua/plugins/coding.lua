@@ -276,4 +276,12 @@ return {
         { "<leader>dw", function() require("dap.ui.widgets").hover() end,                                     desc = "Widgets" },
     },
 
+    -- Guess indent
+    {
+        "nmac427/guess-indent.nvim",
+        event = "BufRead",
+        config = function()
+            require("guess-indent").setup()
+        end,
+    }
 }

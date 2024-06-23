@@ -32,6 +32,10 @@ return {
                 Hint = " ",
                 Info = " ",
             },
+            inlay_hints = {
+                enabled = true,
+                exclude = {},
+            },
             -- Automatically format on save
             autoformat = false,
             -- LSP Server Settings
@@ -170,4 +174,15 @@ return {
             end
         end,
     },
+
+    -- Simple inlay-hints plugin
+    -- TODO: Maybe should handle this as part of lsp config myself
+    {
+        "MysticalDevil/inlay-hints.nvim",
+        event = "LspAttach",
+        dependencies = { "neovim/nvim-lspconfig" },
+        config = function()
+            require("inlay-hints").setup()
+        end,
+    }
 }

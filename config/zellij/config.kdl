@@ -268,10 +268,25 @@ plugins {
 //     }
 // }
 
+themes {
+    gruvbox-dark-fixed {
+        fg 235 219 178
+        bg 80 73 69
+        black 60 56 54
+        red 204 36 29
+        green 152 151 26
+        yellow 215 153 33
+        blue 69 133 136
+        magenta 177 98 134
+        cyan 104 157 106
+        white 251 241 199
+        orange 214 93 14
+    }
+}
 // Choose the theme that is specified in the themes section.
 // Default: default
 //
-theme "gruvbox-dark"
+theme "gruvbox-dark-fixed"
 
 // The name of the default layout to load on startup
 // Default: "default"

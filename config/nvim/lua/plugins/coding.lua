@@ -40,22 +40,17 @@ return {
                     { name = "buffer",   group_index = 3 },
                     { name = "path",     group_index = 1 },
                     { name = "crates",   group_index = 1 },
-                    { name = "copilot",  group_index = 4 },
                 }),
                 formatting = {
                     format = lspkind.cmp_format({
                         mode = 'symbol',
                         maxwidth = 50,
                         ellipsis_char = '...',
-                        symbol_map = { Copilot = "" }
                     })
                 },
                 sorting = {
                     priority_weight = 2,
                     comparators = {
-                        require("copilot_cmp.comparators").prioritize,
-                        require("copilot_cmp.comparators").score,
-
                         -- Below is the default comparitor list and order for nvim-cmp
                         cmp.config.compare.offset,
                         cmp.config.compare.exact,
@@ -139,46 +134,6 @@ return {
             require('Comment').setup()
         end
     },
-
-    -- copilot
-    {
-        "zbirenbaum/copilot.lua",
-        cmd = "Copilot",
-        build = ":Copilot auth",
-        opts = {
-            suggestion = { enabled = false },
-            panel = { enabled = false },
-        },
-        event = "VimEnter",
-        config = function(_, opts)
-            vim.defer_fn(function()
-                require("copilot").setup(opts)
-            end, 100)
-        end,
-    },
-
-    -- copilot cmp plugin
-    {
-        "zbirenbaum/copilot-cmp",
-        dependencies = { "copilot.lua" },
-        opts = {
-            method = "getCompletionsCycling",
-        },
-        config = function(_, opts)
-            local copilot_cmp = require("copilot_cmp")
-            copilot_cmp.setup(opts)
-
-            -- vim.api.nvim_create_autocmd("LspAttach", {
-            --     callback = function(args)
-            --         local client = vim.lsp.get_client_by_id(args.data.client_id)
-            --         if client.name == "copilot" then
-            --             copilot_cmp._on_insert_enter({})
-            --         end
-            --     end,
-            -- })
-        end
-    },
-
 
     -- Debugging nvim-dap
     {

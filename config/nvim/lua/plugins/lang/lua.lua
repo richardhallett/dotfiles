@@ -5,6 +5,12 @@ return {
                 lua_ls = {
                     settings = {
                         Lua = {
+                            format = {
+                                enable = true,
+                                defaultConfig = {
+                                    indent_style = "tab",
+                                }
+                            },
                             workspace = {
                                 checkThirdParty = false,
                             },

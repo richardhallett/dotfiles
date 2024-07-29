@@ -22,6 +22,7 @@
 [user]
 	name = Richard Hallett
 	email = richard@richardhallett.com
+	signingkey = /home/rph/.ssh/id_ed25519.pub
 
 # Load DataCite gitconfig
 [includeIf "gitdir:~/projects/datacite/"]
@@ -30,3 +31,9 @@
 	rebase = false
 [init]
 	defaultBranch = main
+[gpg]
+	format = ssh
+[gpg "ssh"]
+	allowedSignersFile = /home/rph/.ssh/allowed_signers
+[commit]
+	gpgsign = true

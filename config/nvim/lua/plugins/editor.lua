@@ -100,7 +100,7 @@ return {
                 desc = "Find Files (cwd)"
             },
             -- { "<leader>ff", function() require('telescope.builtin').find_files() end,                   desc = "Find Files (cwd)" },
-            { "<leader>fb", function() require('telescope.builtin').buffers() end,                      desc = "Find Buffers" },
+            { "<leader>b", function() require('telescope.builtin').buffers() end,                      desc = "Find Buffers" },
             { "<leader>fw", function() require('telescope.builtin').grep_string() end,                  desc = "Find current word" },
             { "<leader>fh", function() require('telescope.builtin').help_tags() end,                    desc = "Find in Help" },
             { "<leader>fd", function() require('telescope.builtin').diagnostics() end,                  desc = "Find in Diagnostics" },
@@ -223,8 +223,8 @@ return {
     {
         "echasnovski/mini.bufremove",
         keys = {
-            { "<leader>bd", function() require("mini.bufremove").delete(0, false) end, desc = "Delete Buffer" },
-            { "<leader>bD", function() require("mini.bufremove").delete(0, true) end,  desc = "Delete Buffer (Force)" },
+            -- { "<leader>bd", function() require("mini.bufremove").delete(0, false) end, desc = "Delete Buffer" },
+            -- { "<leader>bD", function() require("mini.bufremove").delete(0, true) end,  desc = "Delete Buffer (Force)" },
         },
     },
 

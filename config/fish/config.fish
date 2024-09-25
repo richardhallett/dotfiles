@@ -8,12 +8,14 @@ fish_add_path --move $HOME/bin
 fish_add_path --move $HOME/.local/bin
 
 # Setup language specific path vars
+
+fish_add_path /usr/share/dotnet/
+fish_add_path /home/rph/.dotnet/tools
 fish_add_path $HOME/.cargo/bin
 fish_add_path $HOME/go/bin
 fish_add_path $HOME/.rbenv/bin
 fish_add_path $HOME/n/bin
 fish_add_path $HOME/.cargo/bin/
-fish_add_path /usr/share/dotnet/
 fish_add_path $HOME/.nix-profile/bin/
 fish_add_path /usr/lib/emscripten
 fish_add_path /home/rph/.nimble/bin
@@ -33,3 +35,12 @@ starship init fish | source
 if command -s rbenv > /dev/null
     status --is-interactive; and rbenv init - fish | source
 end
+
+
+# BEGIN opam configuration
+# This is useful if you're using opam as it adds:
+#   - the correct directories to the PATH
+#   - auto-completion for the opam binary
+# This section can be safely removed at any time if needed.
+test -r '/home/rph/.opam/opam-init/init.fish' && source '/home/rph/.opam/opam-init/init.fish' > /dev/null 2> /dev/null; or true
+# END opam configuration

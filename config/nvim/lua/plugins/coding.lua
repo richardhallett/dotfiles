@@ -10,6 +10,7 @@ return {
             "hrsh7th/cmp-path",
             "saadparwaiz1/cmp_luasnip",
             "onsails/lspkind-nvim",
+            "Exafunction/codeium.nvim",
         },
         opts = function()
             local cmp = require("cmp")
@@ -40,12 +41,14 @@ return {
                     { name = "buffer",   group_index = 3 },
                     { name = "path",     group_index = 1 },
                     { name = "crates",   group_index = 1 },
+                    { name = "codeium",  group_index = 1, priority = 100 },
                 }),
                 formatting = {
                     format = lspkind.cmp_format({
                         mode = 'symbol',
                         maxwidth = 50,
                         ellipsis_char = '...',
+                        symbol_map = { Codeium = "" },
                     })
                 },
                 sorting = {
@@ -238,5 +241,13 @@ return {
         config = function()
             require("guess-indent").setup()
         end,
-    }
+    },
+
+    -- Codeium
+    {
+        "Exafunction/codeium.nvim",
+        cmd = "Codeium",
+        build = ":Codeium Auth",
+        opts = {},
+    },
 }

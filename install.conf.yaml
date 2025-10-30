@@ -40,8 +40,9 @@
     ~/.config/zellij:
       glob: true
       path: config/zellij/*
-    ~/.config/helix/config.toml:
-      path: config/helix/config.toml
+    ~/.config/helix/:
+      glob: true
+      path: config/helix/*
 
 
 - create:

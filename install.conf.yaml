@@ -19,12 +19,14 @@
     ~/.config/fish:
       glob: true
       path: config/fish/*
-    ~/.config/nvim:
-      glob: true
-      path: config/nvim/*
+    # ~/.config/nvim:
+    #   glob: true
+    #   path: config/nvim/*
     ~/.config/alacritty:
       glob: true
       path: config/alacritty/*
+    ~/.wezterm.lua:
+      path: config/wezterm.lua
     ~/.config/mimeapps.list:
       path: config/mimeapps.list
     ~/.profile:
@@ -38,6 +40,8 @@
     ~/.config/zellij:
       glob: true
       path: config/zellij/*
+    ~/.config/helix/config.toml:
+      path: config/helix/config.toml
 
 
 - create:

@@ -23,7 +23,7 @@ git clone https://github.com/richardhallett/dotfiles ~/.dotfiles && cd ~/.dotfil
 
 These are typically what I have setup, depending on linux package management to be installed manually.
 
-- alacritty - terminal
+- wezterm - terminal
 - fish - Shell
 - starship - Shell prompt
 - emoji font e.g. noto-fonts-emoji (depending on linux distro may not be required)

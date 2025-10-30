@@ -22,6 +22,7 @@ fish_add_path /home/rph/.nimble/bin
 
 # Aliases
 alias ll 'exa --tree --level=2 -a --long --header --accessed'
+alias hx helix
 
 # Env variables
 # Opt out of .net telemetry
@@ -32,15 +33,14 @@ set -x CHEAT_USE_FZF true
 starship init fish | source
 
 # Load rbenv into shell automatically
-if command -s rbenv > /dev/null
+if command -s rbenv >/dev/null
     status --is-interactive; and rbenv init - fish | source
 end
-
 
 # BEGIN opam configuration
 # This is useful if you're using opam as it adds:
 #   - the correct directories to the PATH
 #   - auto-completion for the opam binary
 # This section can be safely removed at any time if needed.
-test -r '/home/rph/.opam/opam-init/init.fish' && source '/home/rph/.opam/opam-init/init.fish' > /dev/null 2> /dev/null; or true
+test -r '/home/rph/.opam/opam-init/init.fish' && source '/home/rph/.opam/opam-init/init.fish' >/dev/null 2>/dev/null; or true
 # END opam configuration

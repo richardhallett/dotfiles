@@ -1,6 +1,6 @@
+[language-server.csharp]
+command = "csharp-language-server"
+
 [[language]]
 name = "c-sharp"
-scope = "source.cs"
-file-types = ["cs"]
-roots = [".sln", ".csproj"]
-language-servers = ["csharp-ls"]
+language-servers = ["csharp"]
